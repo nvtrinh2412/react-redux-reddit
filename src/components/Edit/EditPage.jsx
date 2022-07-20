@@ -1,27 +1,45 @@
 import React, { useState } from "react";
+import { useSelector,useDispatch } from "react-redux";
 import Input from "../InputFields/Input";
+import {  updateSuccess } from "../redux/userSlice";
 import "./edit.css";
 export const EditPage = (props) => {
+
+  // Data for avatar URL
   const avatarUrl = [
-    "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a155f0b1-4492-4c2c-9f70-101cec027cb9/dew8iac-ceac69b2-62fc-4127-91b1-c534bf3033c0.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2ExNTVmMGIxLTQ0OTItNGMyYy05ZjcwLTEwMWNlYzAyN2NiOVwvZGV3OGlhYy1jZWFjNjliMi02MmZjLTQxMjctOTFiMS1jNTM0YmYzMDMzYzAucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.whCCN4thnDfVtXaY3fYTF5tleKvgRaJl49ahx-IylU4",
+    "https://i.redd.it/snoovatar/avatars/eb2de43d-b72d-4138-a9d6-858ced74159c.png",
+    "https://i.redd.it/snoovatar/avatars/03cad487-421b-46df-801a-451b82485625.png",
+    "https://i.redd.it/snoovatar/avatars/50a26bd0-50fe-4684-8935-52e19aa98cd5.png",
     "https://i.redd.it/rrz3hmsxcll71.png",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5n5xtNDSTbZPaIxt4RQcQgAwM65rxRwX3mA&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdho024xmJyXLxbDNPbgkOXfDvO3OYC6ppCg&usqp=CAU",
-    "https://preview.redd.it/oiynpcmqqow61.png?auto=webp&s=231a94f63382c22994f899d7ca1f5ce2068e08a0",
-    "https://www.pinpng.com/pngs/m/279-2799281_snoo-avatar-reddit-custom-snoo-png-download-reddit.png",
-    "https://mpng.subpng.com/20180416/ldq/kisspng-reddit-logo-united-states-computer-icons-graphic-d-rick-and-morty-5ad4e433e87811.7494947815239014919522.jpg",
-    "https://image.pngaaa.com/815/6165815-middle.png",
-    "https://preview.redd.it/zina8e9scsw51.png?auto=webp&s=de7cb32cbb0103cf8ec7f234fe8e46acacef37a0",
+    "https://i.redd.it/snoovatar/avatars/91a45fdf-bc0b-421a-a057-4df1dde0de6c.png",
+    "https://i.redd.it/snoovatar/avatars/c6922f93-0248-4b3c-923e-08a77ae43091.png",
+    "https://i.redd.it/snoovatar/avatars/e336b327-c51d-4753-a8a4-8893b3ed7a19.png",
+    "https://i.redd.it/snoovatar/avatars/5df626c7-0df3-4787-8e87-245e0e590fe5.png",
+    "https://i.redd.it/snoovatar/avatars/607134ac-3be3-462b-b107-0989ef41f3ec.png",
+
   ];
+
+  //Hook to get and update data
+  const user = useSelector(state => state.user)
+  const dispatch = useDispatch()
+  //state
   const {setEdit} = props
-  const [name,setName] = useState("Justin Nguyen")
-  const [age,setAge]= useState(20);
-  const [about, setAbout] = useState("I'm a software engineer")
-  const [theme,setTheme]= useState("#ff9051")
-  const [url, setUrl]= useState("https://i.redd.it/rrz3hmsxcll71.png")
+  const [name,setName] = useState(user.name)
+  const [age,setAge]= useState(user.age);
+  const [about, setAbout] = useState(user.about)
+  const [theme,setTheme]= useState(user.themeColor)
+  const [url, setUrl]= useState(user.avatarUrl)
   const handleSubmit = (e)=>{
     e.preventDefault();
     setEdit(false)
+    const updatedUser ={
+      name,
+      age,
+      about,
+      avatarUrl: url,
+      themeColor: theme
+    }
+    dispatch(updateSuccess(updatedUser))
   }
   return (
     <>
@@ -45,7 +63,7 @@ export const EditPage = (props) => {
             </div>
             <div className="theme-container">
               <label >Theme</label>
-              <input type="color" onChange={(e)=>setTheme(e.target.value)}/>
+              <input type="color" defaultValue={user.themeColor} onChange={(e)=>setTheme(e.target.value)}/>
             </div>
           </div>
         </section>
