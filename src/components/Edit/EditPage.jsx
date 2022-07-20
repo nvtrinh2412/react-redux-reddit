@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../API/apiRequest";
 import Input from "../InputFields/Input";
 import { updateSuccess } from "../redux/userSlice";
 import "./edit.scss";
 export const EditPage = (props) => {
-
   // Data for avatar URL
   const avatarUrl = [
     "https://i.redd.it/snoovatar/avatars/eb2de43d-b72d-4138-a9d6-858ced74159c.png",
@@ -16,31 +16,30 @@ export const EditPage = (props) => {
     "https://i.redd.it/snoovatar/avatars/e336b327-c51d-4753-a8a4-8893b3ed7a19.png",
     "https://i.redd.it/snoovatar/avatars/5df626c7-0df3-4787-8e87-245e0e590fe5.png",
     "https://i.redd.it/snoovatar/avatars/607134ac-3be3-462b-b107-0989ef41f3ec.png",
-
   ];
 
   //Hook to get and update data
-  const user = useSelector(state => state.user)
-  const dispatch = useDispatch()
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   //state
-  const {setEdit} = props
-  const [name,setName] = useState(user.name)
-  const [age,setAge]= useState(user.age);
-  const [about, setAbout] = useState(user.about)
-  const [theme,setTheme]= useState(user.themeColor)
-  const [url, setUrl]= useState(user.avatarUrl)
-  const handleSubmit = (e)=>{
+  const { setEdit } = props;
+  const [name, setName] = useState(user.name);
+  const [age, setAge] = useState(user.age);
+  const [about, setAbout] = useState(user.about);
+  const [theme, setTheme] = useState(user.themeColor);
+  const [url, setUrl] = useState(user.avatarUrl);
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setEdit(false)
-    const updatedUser ={
+    setEdit(false);
+    const updatedUser = {
       name,
       age,
       about,
       avatarUrl: url,
-      themeColor: theme
-    }
-    dispatch(updateSuccess(updatedUser))
-  }
+      themeColor: theme,
+    };
+    updateUser(updatedUser, dispatch);
+  };
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -48,22 +47,37 @@ export const EditPage = (props) => {
           <button className="close">SAVE </button>
           <div className="edit__profile">Edit Profile</div>
           <div className="input__container">
-            <Input label = "Display name" data = {name} setData = {setName}/>
-            <Input label = "Age" data = {age} setData = {setAge}/>
-            <Input inputType = 'textarea' classStyle = 'input__about'label = "About" data = {about} setData = {setAbout}/>
-            <label >Profile Picture</label>
+            <Input label="Display name" data={name} setData={setName} />
+            <Input label="Age" data={age} setData={setAge} />
+            <Input
+              inputType="textarea"
+              classStyle="input__about"
+              label="About"
+              data={about}
+              setData={setAbout}
+            />
+            <label>Profile Picture</label>
             <div className="input__image-container">
               {avatarUrl.map((url) => {
                 return (
                   <>
-                    <img src={url} className="input__image" alt="reddit avatar" onClick={(e)=>setUrl(e.target.src)}  />
+                    <img
+                      src={url}
+                      className="input__image"
+                      alt="reddit avatar"
+                      onClick={(e) => setUrl(e.target.src)}
+                    />
                   </>
                 );
               })}
             </div>
             <div className="theme__container">
-              <label >Theme</label>
-              <input type="color" defaultValue={user.themeColor} onChange={(e)=>setTheme(e.target.value)}/>
+              <label>Theme</label>
+              <input
+                type="color"
+                defaultValue={user.themeColor}
+                onChange={(e) => setTheme(e.target.value)}
+              />
             </div>
           </div>
         </section>

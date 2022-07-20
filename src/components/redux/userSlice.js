@@ -16,6 +16,7 @@ export const userSlice = createSlice({
       state.pending = true
     },
     updateError: (state) => {
+      state.pending = false
       state.error = true
     },
     updateSuccess: (state, action) => {
