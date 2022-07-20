@@ -19,7 +19,7 @@ function App() {
       {isEdit ? <EditPage setEdit={setEdit} /> : !isEdit && !isOpenPost ? (
         <>
           <Header setEdit={setEdit} />
-          <div className="post-container">
+          <div className="posts__container">
             <Posts />
           </div>
           <Footer isOpenPost={isOpenPost} setOpen={setOpen} />

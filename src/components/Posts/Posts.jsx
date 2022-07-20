@@ -1,17 +1,17 @@
 import {useSelector} from 'react-redux'
-import "./post.css"
+import "./post.scss"
 const Posts = () => {
   const posts = useSelector(state => state.post.posts)
   const tags = ["None", "NSFW", "Mood", "Quotes", "Shitpost"];
   return (
     <>
-    <section className="post-container">
+    <section className="posts__container">
       {posts.slice(1).map((post,idx)=>{
         return(
           <div className="posts">
-            <p className="posts-title">{post.title}</p>
-            <p className={`posts-tags-${tags[post.tag]} posts-tags`}>{tags[post.tag]}</p>
-            <p className="posts-description">{post.description}</p>
+            <p className="posts__title">{post.title}</p>
+            <p className={`posts__tags--${tags[post.tag]} posts__tags`}>{tags[post.tag]}</p>
+            <p className="posts__description">{post.description}</p>
           </div>
         )
       })}

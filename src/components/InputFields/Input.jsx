@@ -1,5 +1,5 @@
 import React from "react";
-import '../Posts/post.css'
+import '../Posts/post.scss'
 
 export default function Input(props) {
   const { inputType, classStyle, label, data, setData } = props;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import Input from "../InputFields/Input";
 import { createPost } from "../redux/postSlice";
-import "./post.css";
+import "./post.scss";
 export default function MakePost(props) {
   const {setOpen} = props
   const dispatch = useDispatch()
@@ -21,9 +21,9 @@ export default function MakePost(props) {
     dispatch(createPost(newPost))
   }
   return (
-    <section className="makepost-container">
-      <div className="makepost-navigation">
-        <p className="makepost-save" onClick={handlePost}>Post</p>
+    <section className="makepost__container">
+      <div className="makepost__navigation">
+        <p className="makepost__save" onClick={handlePost}>Post</p>
       </div>
 
       <Input
@@ -31,25 +31,25 @@ export default function MakePost(props) {
         setData={setTitle}
         inputType="textarea"
         label="Title"
-        classStyle="makepost-title"
+        classStyle="makepost__title"
       />
       <Input
         data={desc}
         setData={setDesc}
         inputType="textarea"
         label="Description"
-        classStyle="makepost-desc"
+        classStyle="makepost__desc"
       />
       <label htmlFor="">Tags</label>
-      <div className="makepost-tags">
+      <div className="makepost__tags">
         {tags.map((tag, idx) => {
           return (
             <button
               key={idx}
               className={`${
                 selectedIdx === idx
-                  ? `makepost-tags-selected`
-                  : `makepost-tags-${tag}`
+                  ? `makepost__tags--selected`
+                  : `makepost__tags--${tag}`
               }`}
               onClick={() => setSelectedIdx(idx)}
             >
