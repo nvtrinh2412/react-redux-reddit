@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useSelector,useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Input from "../InputFields/Input";
-import {  updateSuccess } from "../redux/userSlice";
-import "./edit.css";
+import { updateSuccess } from "../redux/userSlice";
+import "./edit.scss";
 export const EditPage = (props) => {
 
   // Data for avatar URL
@@ -44,24 +44,24 @@ export const EditPage = (props) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <section className="edit-container">
+        <section className="edit__container">
           <button className="close">SAVE </button>
-          <div className="edit-profile">Edit Profile</div>
-          <div className="input-container">
+          <div className="edit__profile">Edit Profile</div>
+          <div className="input__container">
             <Input label = "Display name" data = {name} setData = {setName}/>
             <Input label = "Age" data = {age} setData = {setAge}/>
-            <Input inputType = 'textarea' classStyle = 'input-about'label = "About" data = {about} setData = {setAbout}/>
+            <Input inputType = 'textarea' classStyle = 'input__about'label = "About" data = {about} setData = {setAbout}/>
             <label >Profile Picture</label>
-            <div className="input-image-container">
+            <div className="input__image-container">
               {avatarUrl.map((url) => {
                 return (
                   <>
-                    <img src={url} className="input-image" alt="image" onClick={(e)=>setUrl(e.target.src)}  />
+                    <img src={url} className="input__image" alt="reddit avatar" onClick={(e)=>setUrl(e.target.src)}  />
                   </>
                 );
               })}
             </div>
-            <div className="theme-container">
+            <div className="theme__container">
               <label >Theme</label>
               <input type="color" defaultValue={user.themeColor} onChange={(e)=>setTheme(e.target.value)}/>
             </div>
