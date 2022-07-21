@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../API/apiRequest";
-import Input from "../InputFields/Input";
-import { updateSuccess } from "../redux/userSlice";
+import { updateUser } from "../../userApi";
+import Input from "../../../InputFields/Input";
 import "./edit.scss";
-export const EditPage = (props) => {
+const EditPage = (props) => {
   // Data for avatar URL
   const avatarUrl = [
     "https://i.redd.it/snoovatar/avatars/eb2de43d-b72d-4138-a9d6-858ced74159c.png",
@@ -85,3 +84,5 @@ export const EditPage = (props) => {
     </>
   );
 };
+
+export default EditPage

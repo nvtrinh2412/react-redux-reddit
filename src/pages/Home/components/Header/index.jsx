@@ -2,7 +2,7 @@ import React from 'react'
 import './header.scss'
 import { useSelector } from 'react-redux'
 
-export const Header = (props) => {
+ const Header = (props) => {
   const {setEdit}= props
   const handleEdit = () =>{
     setEdit(true);
@@ -22,3 +22,5 @@ export const Header = (props) => {
     </>
   )
 }
+
+export default Header;
