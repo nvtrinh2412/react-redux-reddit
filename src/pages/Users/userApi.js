@@ -1,4 +1,4 @@
-import { updateError, updateStart, updateSuccess } from "../redux/userSlice"
+import { updateError, updateStart, updateSuccess } from "./userSlice"
 
 function timeout(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));

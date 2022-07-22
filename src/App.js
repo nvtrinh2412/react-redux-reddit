@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import './App.css';
-import { EditPage } from './components/Edit/EditPage';
-import Footer from './components/Footer/Footer';
-import { Header } from './components/Header/Header';
-import MakePost from './components/Posts/MakePost';
-import Posts from './components/Posts/Posts';
-
+import Footer from './pages/Home/components/Footer';
+import Header from './pages/Home/components/Header';
+import MakePost from './pages/Posts/MakePost';
+import Posts from './pages/Posts/Posts';
+import EditPage from './pages/Users/components/Edit';
 function App() {
   const [isEdit, setEdit] = useState(false)
   const [isOpenPost, setOpen] = useState(false)
@@ -15,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* {isEdit ? <EditPage setEdit={setEdit} /> : !isEdit && !isOpenPost ? (
+      {isEdit ? <EditPage setEdit={setEdit} /> : !isEdit && !isOpenPost ? (
         <>
           <Header setEdit={setEdit} />
           <div className="posts__container">
@@ -30,9 +29,7 @@ function App() {
         </>
       )
       }
-      {pending && <div className="loader">Loading ... </div>} */}
-
-      <a href="">Learn</a>
+      {pending && <div className="loader">Loading ... </div>}
     </div>
   );
 }

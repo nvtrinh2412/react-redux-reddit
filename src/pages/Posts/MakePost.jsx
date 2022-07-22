@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import Input from "../InputFields/Input";
-import { createPost } from "../redux/postSlice";
+import { createPost } from "./postSlice";
 import "./post.scss";
 export default function MakePost(props) {
   const {setOpen} = props

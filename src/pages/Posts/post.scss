@@ -1,3 +1,16 @@
+$info_background: #535353;
+$font_family: "Noto Sans", sans-serif;
+$Shitpost: rgb(197, 186, 23);
+$Quotes:rgb(183, 47, 224);
+$Mood: rgb(1, 111, 201);
+$NSFW: rgb(209, 66, 47);
+
+@mixin info_align {
+  padding: 0.25rem 0.5rem 4rem 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .makepost {
   &__container {
     height: 70vh;
@@ -18,23 +31,19 @@
     cursor: pointer;
   }
   &__desc {
-    background-color: #535353;
+    background-color: $info_background;
     color: white;
     border: none;
-    font-family: "Noto Sans", sans-serif;
-    padding: 0.25rem 0.5rem 4rem 0.5rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    font-family: $font_family;
+    @include info_align;
   }
   &__title {
     height: 50px;
-    background-color: #535353;
+    background-color: $info_background;
     color: white;
     border: none;
-    font-family: "Noto Sans", sans-serif;
-    padding: 0.25rem 0.5rem 4rem 0.5rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    font-family: $font_family;
+    @include info_align;
   }
   &__tags {
     margin-top: 1rem;
@@ -46,22 +55,22 @@
       color: white;
       border: none;
       padding: 0.4rem;
-      font-family: "Noto Sans", sans-serif;
+      font-family: $font_family;
       border-radius: 14px;
       cursor: pointer;
     }
 
     &--NSFW {
-      background-color: rgb(209, 66, 47);
+      background-color:$NSFW;
     }
     &--Mood {
-      background-color: rgb(1, 111, 201);
+      background-color: $Mood;
     }
     &--Quotes {
-      background-color: rgb(183, 47, 224);
+      background-color: $Quotes;
     }
     &--Shitpost {
-      background-color: rgb(197, 186, 23);
+      background-color: $Shitpost;
     }
     &--None {
       background-color: grey;
@@ -77,12 +86,12 @@
   background-color: rgb(49, 49, 49);
   margin-bottom: 1rem;
   padding: 1rem 1rem 1rem 2rem;
-  font-family: "Noto Sans", sans-serif;
+  font-family: $font_family;
   &__container {
     display: flex;
     flex-direction: column;
     font-size: 0.85rem;
-    font-family: "Noto Sans", sans-serif;
+    font-family: $font_family;
   }
   &__title {
     font-size: 1.15rem;
@@ -94,23 +103,23 @@
     border: none;
     margin: 0.75rem 0 0.75rem 0;
     font-size: 0.75rem;
-    font-family: "Noto Sans", sans-serif;
+    font-family: $font_family;
     border-radius: 14px;
     width: 50px;
     text-align: center;
     cursor: pointer;
 
     &--NSFW {
-      background-color: rgb(209, 66, 47);
+      background-color: $NSFW;
     }
-    &--Mood {
-      background-color: rgb(1, 111, 201);
+    &--NSFW {
+      background-color: $Mood;
     }
     &--Quotes {
-      background-color: rgb(183, 47, 224);
+      background-color: $Quotes;
     }
     &--Shitpost {
-      background-color: rgb(197, 186, 23);
+      background-color: $Shitpost;
     }
     &--None {
       background-color: grey;
