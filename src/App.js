@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 import './App.css';
 import { EditPage } from './components/Edit/EditPage';
 import Footer from './components/Footer/Footer';
@@ -11,12 +11,11 @@ function App() {
   const [isEdit, setEdit] = useState(false)
   const [isOpenPost, setOpen] = useState(false)
   const pending = useSelector(state => state.user.pending)
-  console.log(pending);
-  const error = useSelector(state => state.user.error)
+  // const error = useSelector(state => state.user.error)
 
   return (
     <div className="App">
-      {isEdit ? <EditPage setEdit={setEdit} /> : !isEdit && !isOpenPost ? (
+      {/* {isEdit ? <EditPage setEdit={setEdit} /> : !isEdit && !isOpenPost ? (
         <>
           <Header setEdit={setEdit} />
           <div className="posts__container">
@@ -31,7 +30,9 @@ function App() {
         </>
       )
       }
-      {pending && <div className="loader">Loading ... </div>}
+      {pending && <div className="loader">Loading ... </div>} */}
+
+      <a href="">Learn</a>
     </div>
   );
 }

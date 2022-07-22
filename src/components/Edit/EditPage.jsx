@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../API/apiRequest";
 import Input from "../InputFields/Input";
-import { updateSuccess } from "../redux/userSlice";
 import "./edit.scss";
 export const EditPage = (props) => {
   // Data for avatar URL
